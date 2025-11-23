@@ -1,189 +1,457 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Orchestra Chain</title>
-  <style>
-    /* ===== BASE LAYOUT ===== */
-    * {
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orchestra Chain – TRLK</title>
 
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      font-family: Arial, sans-serif;
-      color: #ffffff;
-      text-align: center;
+    <!-- Meta -->
+    <meta name="description" content="Orchestra Chain – an interstellar orchestra of memecoins. First musician: TRLK – The Trombone Traveler.">
+    <meta name="theme-color" content="#0b041f">
 
-      /* Космический фон */
-      background:
-        radial-gradient(circle at 20% 0%, #3a1b6f 0, transparent 55%),
-        radial-gradient(circle at 80% 0%, #174f7a 0, transparent 55%),
-        radial-gradient(circle at 15% 80%, #5f1e4f 0, transparent 55%),
-        radial-gradient(circle at 85% 80%, #1d3f5f 0, transparent 55%),
-        radial-gradient(circle at center, #12081f 0, #05030b 55%, #000000 100%);
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Orchestra Chain – TRLK">
+    <meta property="og:description" content="An interstellar orchestra of memecoins. First musician: TRLK – The Trombone Traveler.">
+    <meta property="og:image" content="logo.png"><!-- если есть отдельный og-баннер, поменяй здесь -->
+    <meta property="og:url" content="https://brilliant1972.github.io/OrchestraChain/">
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 16px 24px;
-      overflow-x: hidden;
-      position: relative;
-    }
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Orchestra Chain – TRLK">
+    <meta name="twitter:description" content="An interstellar orchestra of memecoins. First musician: TRLK – The Trombone Traveler.">
+    <meta name="twitter:image" content="logo.png">
 
-    /* Плавающие звезды — чистый CSS, без картинок */
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      inset: -50px;
-      pointer-events: none;
-      background-image:
-        radial-gradient(2px 2px at 10% 20%, rgba(255, 255, 255, 0.7), transparent),
-        radial-gradient(1.5px 1.5px at 70% 30%, rgba(255, 255, 255, 0.5), transparent),
-        radial-gradient(1.5px 1.5px at 30% 80%, rgba(255, 255, 255, 0.4), transparent),
-        radial-gradient(2px 2px at 90% 70%, rgba(255, 255, 255, 0.6), transparent),
-        radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.4), transparent);
-      z-index: -1;
-      opacity: 0.6;
-      animation: starDrift 40s linear infinite;
-    }
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-    body::after {
-      opacity: 0.35;
-      filter: blur(1px);
-      animation-duration: 65s;
-      animation-direction: reverse;
-    }
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top, #3b1fa8 0, #05040f 55%, #020307 100%);
+            color: #f8f8ff;
+            display: flex;
+            justify-content: center;
+            padding: 24px 16px 40px;
+        }
 
-    @keyframes starDrift {
-      0% {
-        transform: translate3d(0, 0, 0) scale(1);
-      }
-      50% {
-        transform: translate3d(-20px, -40px, 0) scale(1.02);
-      }
-      100% {
-        transform: translate3d(0, 0, 0) scale(1);
-      }
-    }
+        .page {
+            width: 100%;
+            max-width: 980px;
+            background: radial-gradient(circle at top left, rgba(255,255,255,0.06), transparent 60%),
+                        radial-gradient(circle at bottom right, rgba(255,255,255,0.04), transparent 60%),
+                        #070814;
+            border-radius: 24px;
+            box-shadow: 0 22px 60px rgba(0,0,0,0.85);
+            padding: 24px 22px 28px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
 
-    /* ===== CONTENT CARD ===== */
-    .wrapper {
-      max-width: 640px;
-      width: 100%;
-      padding: 32px 24px 28px;
-      border-radius: 18px;
-      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.08), rgba(7, 5, 20, 0.92));
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow:
-        0 0 40px rgba(0, 0, 0, 0.7),
-        0 0 80px rgba(44, 123, 255, 0.12);
-      backdrop-filter: blur(16px);
-    }
+        @media (min-width: 720px) {
+            .page {
+                padding: 30px 40px 36px;
+            }
+        }
 
-    .logo {
-      margin-top: 4px;
-      width: 150px;
-      max-width: 45vw;
-      filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.4));
-    }
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            margin-bottom: 20px;
+        }
 
-    h1 {
-      font-size: 32px;
-      margin: 24px 0 10px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-    p {
-      font-size: 18px;
-      opacity: 0.85;
-      line-height: 1.6;
-      margin: 0;
-    }
+        .brand img {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+        }
 
-    p b {
-      opacity: 1;
-    }
+        .brand-title {
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            font-size: 14px;
+        }
 
-    .buttons {
-      margin-top: 32px;
-    }
+        .tagline-mini {
+            font-size: 11px;
+            opacity: 0.65;
+        }
 
-    .buttons a {
-      display: inline-block;
-      margin: 8px;
-      padding: 11px 22px;
-      background: rgba(12, 16, 40, 0.9);
-      border-radius: 999px;
-      border: 1px solid rgba(154, 178, 255, 0.7);
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 15px;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-    }
+        .top-links a {
+            font-size: 13px;
+            text-decoration: none;
+            color: #f1f1ff;
+            opacity: 0.8;
+            margin-left: 16px;
+        }
 
-    .buttons a:hover {
-      background: rgba(55, 90, 200, 0.95);
-      border-color: rgba(212, 230, 255, 1);
-      box-shadow: 0 0 18px rgba(95, 145, 255, 0.8);
-      transform: translateY(-2px);
-    }
+        .top-links a:hover {
+            opacity: 1;
+        }
 
-    footer {
-      margin-top: 32px;
-      opacity: 0.6;
-      font-size: 14px;
-    }
+        .hero {
+            text-align: center;
+            margin-top: 8px;
+            margin-bottom: 28px;
+        }
 
-    /* ===== MOBILE ADAPTATION ===== */
-    @media (max-width: 480px) {
-      .wrapper {
-        padding: 24px 18px 22px;
-      }
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 24px;
+            margin-bottom: 14px;
+        }
 
-      h1 {
-        font-size: 26px;
-      }
+        h1 {
+            font-size: 26px;
+            margin: 0 0 8px;
+            letter-spacing: 0.04em;
+        }
 
-      p {
-        font-size: 16px;
-      }
+        .hero-sub {
+            font-size: 14px;
+            opacity: 0.8;
+            line-height: 1.6;
+            max-width: 520px;
+            margin: 0 auto;
+        }
 
-      .buttons a {
-        width: 100%;
-        max-width: 260px;
-      }
-    }
-  </style>
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            font-size: 12px;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            margin-top: 18px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.16);
+            background: rgba(7,7,20,0.9);
+            color: #fdfdff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.18s ease-out;
+        }
+
+        .btn-main {
+            background: linear-gradient(135deg, #f7c14b, #f1a629);
+            color: #1b1208;
+            border-color: rgba(255,213,130,0.8);
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 26px rgba(0,0,0,0.45);
+            border-color: rgba(255,255,255,0.32);
+        }
+
+        .btn-main:hover {
+            filter: brightness(1.04);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+            margin-top: 12px;
+        }
+
+        @media (min-width: 760px) {
+            .grid {
+                grid-template-columns: 1.25fr 1fr;
+            }
+        }
+
+        .card {
+            background: rgba(5,5,15,0.88);
+            border-radius: 18px;
+            padding: 16px 16px 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .card h2 {
+            font-size: 17px;
+            margin: 0 0 10px;
+        }
+
+        .card p {
+            font-size: 13px;
+            line-height: 1.6;
+            opacity: 0.86;
+            margin: 4px 0;
+        }
+
+        .label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            opacity: 0.6;
+            margin-bottom: 4px;
+        }
+
+        .tokenomics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .token-box {
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 10px 10px 9px;
+            border: 1px solid rgba(255,255,255,0.05);
+            font-size: 12px;
+        }
+
+        .token-box strong {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 3px;
+        }
+
+        .token-box span {
+            opacity: 0.8;
+        }
+
+        .token-meta {
+            font-size: 12px;
+            margin-top: 8px;
+            opacity: 0.78;
+        }
+
+        .contract-pill {
+            font-family: "SF Mono", Menlo, Consolas, monospace;
+            font-size: 11px;
+            padding: 6px 10px;
+            background: rgba(0,0,0,0.6);
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.12);
+            display: inline-block;
+            margin-top: 4px;
+        }
+
+        .roadmap-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 6px 0 0;
+            font-size: 13px;
+            opacity: 0.88;
+        }
+
+        .roadmap-list li {
+            margin-bottom: 4px;
+        }
+
+        .muted {
+            opacity: 0.7;
+            font-size: 11px;
+            margin-top: 8px;
+        }
+
+        footer {
+            margin-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 10px;
+            font-size: 11px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            opacity: 0.6;
+        }
+
+        footer a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(255,255,255,0.3);
+        }
+
+        footer a:hover {
+            opacity: 0.9;
+        }
+    </style>
 </head>
 <body>
-  <div class="wrapper">
-    <img src="logo.png" class="logo" alt="Orchestra Chain logo">
+<div class="page">
+    <header class="top-bar">
+        <div class="brand">
+            <img src="logo.png" alt="Orchestra Chain logo">
+            <div>
+                <div class="brand-title">ORCHESTRA CHAIN</div>
+                <div class="tagline-mini">Interstellar orchestra of memecoins</div>
+            </div>
+        </div>
+        <nav class="top-links">
+            <!-- ссылки на X-каналы -->
+            <a href="https://x.com/OrchestraChain" target="_blank" rel="noopener">Main X</a>
+            <a href="https://x.com/TralikTrombon" target="_blank" rel="noopener">TRLK X</a><!-- поменяй на реальный @ -->
+        </nav>
+    </header>
 
-    <h1>Orchestra Chain</h1>
+    <main>
+        <section class="hero">
+            <div class="pill">First musician of the chain • $TRLK 🎺</div>
+            <img src="logo.png" alt="Orchestra Chain logo" class="hero-logo">
+            <h1>ORCHESTRA CHAIN</h1>
+            <p class="hero-sub">
+                An interstellar orchestra of memecoins.<br>
+                Every instrument becomes a token. First to play:<br>
+                <strong>TRLK – The Trombone Traveler.</strong>
+            </p>
 
-    <p>
-      An interstellar orchestra of memecoins.<br>
-      Every instrument becomes a token.<br>
-      First musician: <b>TRLK – The Trombone Traveler.</b>
-    </p>
+            <div class="hero-buttons">
+                <a href="https://x.com/OrchestraChain" class="btn btn-main" target="_blank" rel="noopener">
+                    X (Twitter)
+                </a>
+                <a href="https://t.me/OrchestraChain" class="btn" target="_blank" rel="noopener">
+                    Telegram Hub
+                </a>
+                <a href="https://t.me/YourSecondCoinChat" class="btn" target="_blank" rel="noopener">
+                    TRLK / VIX Community
+                </a>
+            </div>
+        </section>
 
-    <div class="buttons">
-      <a href="https://x.com/orchestrachain" target="_blank">X (Twitter)</a>
-      <a href="https://t.me/OrchestraChain" target="_blank">Telegram</a>
-    </div>
+        <section class="grid">
+            <!-- About / Ecosystem -->
+            <article class="card">
+                <div class="label">About</div>
+                <h2>The cosmic orchestra</h2>
+                <p>
+                    Orchestra Chain is a long-term experiment in building a transparent,
+                    community-owned ecosystem where every new memecoin is a new
+                    <strong>instrument</strong> in the band.
+                </p>
+                <p>
+                    <strong>$TRLK</strong> is the first musician – a trombone traveler
+                    that opens the score for future instruments and collaborations.
+                    No stealth rugs, no hidden games – only public tokenomics and
+                    step-by-step development.
+                </p>
+                <p class="muted">
+                    More instruments (tokens) will be announced on X and in Telegram.
+                    Follow both to catch every new note.
+                </p>
+            </article>
+
+            <!-- Tokenomics -->
+            <article class="card">
+                <div class="label">Tokenomics (draft)</div>
+                <h2>$TRLK – 1,000,000,000 Total Supply</h2>
+
+                <div class="tokenomics-grid">
+                    <div class="token-box">
+                        <strong>50% – DEX Liquidity</strong>
+                        <span>Locked at launch for fair trading.</span>
+                    </div>
+                    <div class="token-box">
+                        <strong>20% – Community &amp; Airdrops</strong>
+                        <span>Quests, early supporters, orchestra rewards.</span>
+                    </div>
+                    <div class="token-box">
+                        <strong>15% – Partnerships</strong>
+                        <span>KOLs, listings, cross-community collabs.</span>
+                    </div>
+                    <div class="token-box">
+                        <strong>10% – Team (Vested)</strong>
+                        <span>Linear unlock over time. No instant dump.</span>
+                    </div>
+                    <div class="token-box">
+                        <strong>5% – Treasury</strong>
+                        <span>Future instruments and ecosystem tools.</span>
+                    </div>
+                </div>
+
+                <p class="token-meta">
+                    <strong>Contract (Base):</strong><br>
+                    <span class="contract-pill">0x0000...COMING_SOON</span>
+                </p>
+                <p class="muted">
+                    All allocations and lock details will be published in the
+                    official <strong>Tokenomics v1.0</strong> document before launch.
+                </p>
+            </article>
+        </section>
+
+        <section class="grid" style="margin-top: 18px;">
+            <!-- Roadmap -->
+            <article class="card">
+                <div class="label">Roadmap</div>
+                <h2>From first note to full orchestra</h2>
+                <ul class="roadmap-list">
+                    <li>✅ Design &amp; lore for Orchestra Chain + TRLK</li>
+                    <li>✅ Website, social channels, Telegram hub</li>
+                    <li>🔄 Publish Tokenomics v1.0 &amp; security checks</li>
+                    <li>🔄 Launch $TRLK on DEX (Base) with locked liquidity</li>
+                    <li>🔄 Community quests, airdrops, first collabs</li>
+                    <li>🔜 Second musician (new token) + ecosystem dashboard</li>
+                </ul>
+                <p class="muted">
+                    Roadmap is intentionally simple. Delivery > empty promises.
+                </p>
+            </article>
+
+            <!-- How to join -->
+            <article class="card">
+                <div class="label">How to join</div>
+                <h2>Become part of the band</h2>
+                <p>
+                    1. Follow <strong>@OrchestraChain</strong> and the
+                    <strong>TRLK</strong> X account for live updates.<br>
+                    2. Join the Telegram hub for announcements and community talks.<br>
+                    3. Wait for the official launch post with contract and
+                    step-by-step “How to buy” guide.
+                </p>
+                <p class="muted">
+                    No private seed rounds, no secret presale.
+                    Everyone enters the same public stage.
+                </p>
+            </article>
+        </section>
+    </main>
 
     <footer>
-      © 2025 Orchestra Chain™
+        <div>© 2025 Orchestra Chain™ • Built for transparency, not for rugs.</div>
+        <div>
+            <a href="https://x.com/OrchestraChain" target="_blank" rel="noopener">X</a>
+            &nbsp;•&nbsp;
+            <a href="https://t.me/OrchestraChain" target="_blank" rel="noopener">Telegram</a>
+        </div>
     </footer>
-  </div>
+</div>
 </body>
 </html>

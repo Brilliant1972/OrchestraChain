@@ -1,457 +1,997 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orchestra Chain – TRLK</title>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <title>Orchestra Chain – TRLK</title>
 
-    <!-- Meta -->
-    <meta name="description" content="Orchestra Chain – an interstellar orchestra of memecoins. First musician: TRLK – The Trombone Traveler.">
-    <meta name="theme-color" content="#0b041f">
+  <!-- OG / Twitter -->
+  <meta property="og:title" content="Orchestra Chain – Interstellar orchestra of memecoins" />
+  <meta property="og:description" content="An interstellar orchestra of memecoins. Every instrument becomes a token. First to play: TRLK – The Trombone Traveler." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://brilliant1972.github.io/OrchestraChain/" />
+  <meta property="og:image" content="https://brilliant1972.github.io/OrchestraChain/og-image.png" />
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Orchestra Chain – TRLK">
-    <meta property="og:description" content="An interstellar orchestra of memecoins. First musician: TRLK – The Trombone Traveler.">
-    <meta property="og:image" content="logo.png"><!-- если есть отдельный og-баннер, поменяй здесь -->
-    <meta property="og:url" content="https://brilliant1972.github.io/OrchestraChain/">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Orchestra Chain – TRLK" />
+  <meta name="twitter:description" content="The first musician of the Orchestra Chain is tuning: TRLK – The Trombone Traveler." />
+  <meta name="twitter:image" content="https://brilliant1972.github.io/OrchestraChain/og-image.png" />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Orchestra Chain – TRLK">
-    <meta name="twitter:description" content="An interstellar orchestra of memecoins. First musician: TRLK – The Trombone Traveler.">
-    <meta name="twitter:image" content="logo.png">
+  <style>
+    :root {
+      --bg-start: #1b0033;
+      --bg-end: #003b6f;
+      --card-bg: rgba(12, 12, 24, 0.92);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #ffc94a;
+      --accent-soft: rgba(255, 201, 74, 0.16);
+      --text-main: #f8fafc;
+      --text-muted: #9ca3af;
+      --pill: rgba(15, 23, 42, 0.9);
+    }
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+    * {
+      box-sizing: border-box;
+    }
 
-        body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: radial-gradient(circle at top, #3b1fa8 0, #05040f 55%, #020307 100%);
-            color: #f8f8ff;
-            display: flex;
-            justify-content: center;
-            padding: 24px 16px 40px;
-        }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Inter", sans-serif;
+      color: var(--text-main);
+      background: radial-gradient(circle at top left, #3b0764, #020617 55%),
+        radial-gradient(circle at bottom right, #0f766e, #020617 60%);
+      background-attachment: fixed;
+    }
 
-        .page {
-            width: 100%;
-            max-width: 980px;
-            background: radial-gradient(circle at top left, rgba(255,255,255,0.06), transparent 60%),
-                        radial-gradient(circle at bottom right, rgba(255,255,255,0.04), transparent 60%),
-                        #070814;
-            border-radius: 24px;
-            box-shadow: 0 22px 60px rgba(0,0,0,0.85);
-            padding: 24px 22px 28px;
-            border: 1px solid rgba(255,255,255,0.06);
-        }
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.18;
+      mix-blend-mode: soft-light;
+      background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+      z-index: 0;
+    }
 
-        @media (min-width: 720px) {
-            .page {
-                padding: 30px 40px 36px;
-            }
-        }
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
 
-        .top-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 18px;
-            margin-bottom: 20px;
-        }
+    /* Header */
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      gap: 12px;
+    }
 
-        .brand img {
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
-        }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .brand-title {
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            font-size: 14px;
-        }
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 30% 20%, #ffe58a, #facc15 40%, #92400e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 24px rgba(250, 204, 21, 0.6);
+    }
 
-        .tagline-mini {
-            font-size: 11px;
-            opacity: 0.65;
-        }
+    .brand-logo span {
+      font-size: 22px;
+    }
 
-        .top-links a {
-            font-size: 13px;
-            text-decoration: none;
-            color: #f1f1ff;
-            opacity: 0.8;
-            margin-left: 16px;
-        }
+    .brand-text-main {
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
 
-        .top-links a:hover {
-            opacity: 1;
-        }
+    .brand-text-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
 
-        .hero {
-            text-align: center;
-            margin-top: 8px;
-            margin-bottom: 28px;
-        }
+    .lang-switch {
+      display: flex;
+      gap: 6px;
+    }
 
-        .hero-logo {
-            width: 120px;
-            height: 120px;
-            border-radius: 24px;
-            margin-bottom: 14px;
-        }
+    .lang-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text-muted);
+      font-size: 11px;
+      padding: 6px 10px;
+      cursor: pointer;
+    }
 
-        h1 {
-            font-size: 26px;
-            margin: 0 0 8px;
-            letter-spacing: 0.04em;
-        }
+    .lang-btn.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(253, 224, 71, 0.08);
+    }
 
-        .hero-sub {
-            font-size: 14px;
-            opacity: 0.8;
-            line-height: 1.6;
-            max-width: 520px;
-            margin: 0 auto;
-        }
+    /* Card layout */
 
-        .pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 12px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.08);
-            font-size: 12px;
-            margin-bottom: 10px;
-            opacity: 0.9;
-        }
+    .shell {
+      border-radius: 24px;
+      background: radial-gradient(circle at top, rgba(253, 224, 71, 0.08), transparent 55%),
+        radial-gradient(circle at bottom, rgba(59, 130, 246, 0.16), transparent 60%);
+      padding: 1px;
+      box-shadow: 0 30px 120px rgba(15, 23, 42, 0.9);
+    }
 
-        .hero-buttons {
-            margin-top: 18px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+    .card {
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.98), #020617);
+      border: 1px solid var(--card-border);
+      padding: 26px 22px 32px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr);
+      gap: 20px;
+    }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px 20px;
-            border-radius: 999px;
-            border: 1px solid rgba(255,255,255,0.16);
-            background: rgba(7,7,20,0.9);
-            color: #fdfdff;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: 0.18s ease-out;
-        }
+    @media (min-width: 900px) {
+      .card {
+        grid-template-columns: 1.2fr 1.1fr;
+        padding: 28px 28px 34px;
+      }
+    }
 
-        .btn-main {
-            background: linear-gradient(135deg, #f7c14b, #f1a629);
-            color: #1b1208;
-            border-color: rgba(255,213,130,0.8);
-        }
+    /* Hero */
 
-        .btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 10px 26px rgba(0,0,0,0.45);
-            border-color: rgba(255,255,255,0.32);
-        }
+    .hero-pill-row {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
 
-        .btn-main:hover {
-            filter: brightness(1.04);
-        }
+    .hero-pill {
+      background: var(--pill);
+      border-radius: 999px;
+      padding: 4px 10px 4px 4px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
 
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 18px;
-            margin-top: 12px;
-        }
+    .hero-pill-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #fffbeb, #facc15 40%, #92400e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      box-shadow: 0 0 18px rgba(250, 204, 21, 0.7);
+    }
 
-        @media (min-width: 760px) {
-            .grid {
-                grid-template-columns: 1.25fr 1fr;
-            }
-        }
+    .hero-left {
+      text-align: center;
+    }
 
-        .card {
-            background: rgba(5,5,15,0.88);
-            border-radius: 18px;
-            padding: 16px 16px 18px;
-            border: 1px solid rgba(255,255,255,0.08);
-        }
+    @media (min-width: 900px) {
+      .hero-left {
+        text-align: left;
+      }
+    }
 
-        .card h2 {
-            font-size: 17px;
-            margin: 0 0 10px;
-        }
+    .hero-title {
+      font-size: 32px;
+      line-height: 1.2;
+      margin: 0 0 10px;
+    }
 
-        .card p {
-            font-size: 13px;
-            line-height: 1.6;
-            opacity: 0.86;
-            margin: 4px 0;
-        }
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin: 0 0 16px;
+    }
 
-        .label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.14em;
-            opacity: 0.6;
-            margin-bottom: 4px;
-        }
+    .hero-token-line {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
 
-        .tokenomics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 10px;
-            margin-top: 8px;
-        }
+    .hero-token-line span {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
 
-        .token-box {
-            background: rgba(255,255,255,0.03);
-            border-radius: 12px;
-            padding: 10px 10px 9px;
-            border: 1px solid rgba(255,255,255,0.05);
-            font-size: 12px;
-        }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
 
-        .token-box strong {
-            display: block;
-            font-size: 13px;
-            margin-bottom: 3px;
-        }
+    @media (min-width: 900px) {
+      .cta-row {
+        justify-content: flex-start;
+      }
+    }
 
-        .token-box span {
-            opacity: 0.8;
-        }
+    .btn {
+      border-radius: 999px;
+      font-size: 13px;
+      padding: 9px 16px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease,
+        color 0.15s ease;
+      white-space: nowrap;
+    }
 
-        .token-meta {
-            font-size: 12px;
-            margin-top: 8px;
-            opacity: 0.78;
-        }
+    .btn-primary {
+      background: radial-gradient(circle at 20% 0%, #fef9c3, #facc15 42%, #a16207);
+      color: #111827;
+      box-shadow: 0 0 32px rgba(250, 204, 21, 0.75);
+      font-weight: 600;
+    }
 
-        .contract-pill {
-            font-family: "SF Mono", Menlo, Consolas, monospace;
-            font-size: 11px;
-            padding: 6px 10px;
-            background: rgba(0,0,0,0.6);
-            border-radius: 999px;
-            border: 1px solid rgba(255,255,255,0.12);
-            display: inline-block;
-            margin-top: 4px;
-        }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 40px rgba(250, 204, 21, 0.9);
+    }
 
-        .roadmap-list {
-            list-style: none;
-            padding-left: 0;
-            margin: 6px 0 0;
-            font-size: 13px;
-            opacity: 0.88;
-        }
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      color: #e5e7eb;
+    }
 
-        .roadmap-list li {
-            margin-bottom: 4px;
-        }
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: #facc15;
+      color: #facc15;
+      transform: translateY(-1px);
+    }
 
-        .muted {
-            opacity: 0.7;
-            font-size: 11px;
-            margin-top: 8px;
-        }
+    .btn-secondary {
+      background: rgba(59, 130, 246, 0.14);
+      border: 1px solid rgba(96, 165, 250, 0.7);
+      color: #e5e7eb;
+    }
 
-        footer {
-            margin-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            padding-top: 10px;
-            font-size: 11px;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 8px;
-            opacity: 0.6;
-        }
+    .btn-secondary:hover {
+      background: rgba(37, 99, 235, 0.3);
+      transform: translateY(-1px);
+    }
 
-        footer a {
-            color: inherit;
-            text-decoration: none;
-            border-bottom: 1px dotted rgba(255,255,255,0.3);
-        }
+    .hero-badge-row {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
 
-        footer a:hover {
-            opacity: 0.9;
-        }
-    </style>
+    @media (min-width: 900px) {
+      .hero-badge-row {
+        justify-content: flex-start;
+      }
+    }
+
+    .hero-badge {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.8);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    /* Right column sections */
+
+    .grid-right {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 12px;
+    }
+
+    .section-card {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 16px;
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      padding: 14px 14px 16px;
+    }
+
+    .section-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #9ca3af;
+    }
+
+    .section-tag {
+      font-size: 10px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(17, 24, 39, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: #d1d5db;
+    }
+
+    .section-body {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .section-body-strong {
+      color: #e5e7eb;
+    }
+
+    .tokenomics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .token-box {
+      background: rgba(15, 23, 42, 0.92);
+      border-radius: 12px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 8px 9px;
+      font-size: 11px;
+    }
+
+    .token-box strong {
+      color: #e5e7eb;
+    }
+
+    .token-percent {
+      color: #facc15;
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    .roadmap-steps {
+      display: grid;
+      gap: 6px;
+      font-size: 11px;
+      margin-top: 4px;
+    }
+
+    .step-pill {
+      padding: 6px 8px;
+      border-radius: 10px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    .step-title {
+      color: #e5e7eb;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+      font-size: 11px;
+    }
+
+    .team-card {
+      padding: 8px 9px;
+      border-radius: 10px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    .team-role {
+      font-size: 11px;
+      color: #e5e7eb;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .team-meta {
+      color: var(--text-muted);
+      font-size: 10px;
+    }
+
+    .multichain-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 8px;
+      margin-top: 6px;
+      font-size: 11px;
+    }
+
+    .chain-pill {
+      padding: 7px 8px;
+      border-radius: 10px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    .chain-name {
+      color: #e5e7eb;
+      font-weight: 600;
+      margin-bottom: 1px;
+    }
+
+    .chain-status {
+      font-size: 10px;
+      color: #9ca3af;
+    }
+
+    .contract-grid {
+      display: grid;
+      gap: 4px;
+      font-size: 11px;
+      margin-top: 4px;
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+      font-size: 11px;
+    }
+
+    .faq-list {
+      font-size: 11px;
+      display: grid;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .faq-item-question {
+      color: #e5e7eb;
+      font-weight: 600;
+      margin-bottom: 1px;
+    }
+
+    /* Footer */
+
+    footer {
+      margin-top: 22px;
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .footer-links a {
+      color: #e5e7eb;
+      text-decoration: none;
+      opacity: 0.85;
+      font-size: 11px;
+    }
+
+    .footer-links a:hover {
+      color: #facc15;
+      opacity: 1;
+    }
+
+    .badge-small {
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 3px 8px;
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 10px;
+      color: #9ca3af;
+    }
+
+    /* Simple anchor spacing */
+
+    section {
+      scroll-margin-top: 80px;
+    }
+
+  </style>
 </head>
 <body>
-<div class="page">
+  <div class="noise"></div>
+
+  <main>
     <header class="top-bar">
-        <div class="brand">
-            <img src="logo.png" alt="Orchestra Chain logo">
-            <div>
-                <div class="brand-title">ORCHESTRA CHAIN</div>
-                <div class="tagline-mini">Interstellar orchestra of memecoins</div>
-            </div>
+      <div class="brand">
+        <div class="brand-logo">
+          <span>🎼</span>
         </div>
-        <nav class="top-links">
-            <!-- ссылки на X-каналы -->
-            <a href="https://x.com/OrchestraChain" target="_blank" rel="noopener">Main X</a>
-            <a href="https://x.com/TralikTrombon" target="_blank" rel="noopener">TRLK X</a><!-- поменяй на реальный @ -->
-        </nav>
+        <div>
+          <div class="brand-text-main">ORCHESTRA CHAIN</div>
+          <div class="brand-text-sub" data-i18n="header_tagline">
+            Interstellar orchestra of memecoins
+          </div>
+        </div>
+      </div>
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+      </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="pill">First musician of the chain • $TRLK 🎺</div>
-            <img src="logo.png" alt="Orchestra Chain logo" class="hero-logo">
-            <h1>ORCHESTRA CHAIN</h1>
-            <p class="hero-sub">
-                An interstellar orchestra of memecoins.<br>
-                Every instrument becomes a token. First to play:<br>
-                <strong>TRLK – The Trombone Traveler.</strong>
-            </p>
+    <div class="shell">
+      <div class="card">
 
-            <div class="hero-buttons">
-                <a href="https://x.com/OrchestraChain" class="btn btn-main" target="_blank" rel="noopener">
-                    X (Twitter)
-                </a>
-                <a href="https://t.me/OrchestraChain" class="btn" target="_blank" rel="noopener">
-                    Telegram Hub
-                </a>
-                <a href="https://t.me/YourSecondCoinChat" class="btn" target="_blank" rel="noopener">
-                    TRLK / VIX Community
-                </a>
+        <!-- Left: hero -->
+        <section class="hero-left">
+          <div class="hero-pill-row">
+            <div class="hero-pill">
+              <div class="hero-pill-icon">🎺</div>
+              <span data-i18n="hero_pill">First musician of the chain: TRLK</span>
             </div>
+          </div>
+
+          <h1 class="hero-title" data-i18n="hero_title">
+            A new cosmic frequency is tuning in.
+          </h1>
+
+          <p class="hero-subtitle" data-i18n="hero_subtitle">
+            Orchestra Chain is an interstellar orchestra of memecoins. Every
+            instrument becomes a token. First to play: TRLK – The Trombone
+            Traveler.
+          </p>
+
+          <p class="hero-token-line">
+            <span>$TRLK</span> · Total Supply: 1,000,000,000 · Chain: Base
+            mainnet
+          </p>
+
+          <div class="cta-row">
+            <a
+              href="https://x.com/OrchestraChain"
+              target="_blank"
+              rel="noreferrer"
+              class="btn btn-primary"
+            >
+              X (Twitter) 🚀
+            </a>
+            <a
+              href="https://t.me/OrchestraCommunity"
+              target="_blank"
+              rel="noreferrer"
+              class="btn btn-ghost"
+            >
+              Telegram Hub 🎧
+            </a>
+            <a
+              href="#tokenomics"
+              class="btn btn-secondary"
+            >
+              Tokenomics v1.0 📜
+            </a>
+          </div>
+
+          <div class="hero-badge-row">
+            <div class="hero-badge">No stealth rugs</div>
+            <div class="hero-badge">Transparent tokenomics</div>
+            <div class="hero-badge">Community-driven roadmap</div>
+          </div>
         </section>
 
-        <section class="grid">
-            <!-- About / Ecosystem -->
-            <article class="card">
-                <div class="label">About</div>
-                <h2>The cosmic orchestra</h2>
-                <p>
-                    Orchestra Chain is a long-term experiment in building a transparent,
-                    community-owned ecosystem where every new memecoin is a new
-                    <strong>instrument</strong> in the band.
-                </p>
-                <p>
-                    <strong>$TRLK</strong> is the first musician – a trombone traveler
-                    that opens the score for future instruments and collaborations.
-                    No stealth rugs, no hidden games – only public tokenomics and
-                    step-by-step development.
-                </p>
-                <p class="muted">
-                    More instruments (tokens) will be announced on X and in Telegram.
-                    Follow both to catch every new note.
-                </p>
-            </article>
+        <!-- Right: sections -->
+        <div class="grid-right">
+          <!-- About -->
+          <section id="about" class="section-card">
+            <div class="section-title-row">
+              <div class="section-label" data-i18n="about_label">About</div>
+              <div class="section-tag">Cosmic orchestra</div>
+            </div>
+            <div class="section-body" data-i18n="about_body">
+              Orchestra Chain is a long-term experiment in building a transparent,
+              community-owned ecosystem where every new memecoin is a new
+              instrument in the band. TRLK is the first musician – a trombone
+              traveler that opens the stage for future instruments and
+              collaborations.
+            </div>
+          </section>
 
-            <!-- Tokenomics -->
-            <article class="card">
-                <div class="label">Tokenomics (draft)</div>
-                <h2>$TRLK – 1,000,000,000 Total Supply</h2>
-
-                <div class="tokenomics-grid">
-                    <div class="token-box">
-                        <strong>50% – DEX Liquidity</strong>
-                        <span>Locked at launch for fair trading.</span>
-                    </div>
-                    <div class="token-box">
-                        <strong>20% – Community &amp; Airdrops</strong>
-                        <span>Quests, early supporters, orchestra rewards.</span>
-                    </div>
-                    <div class="token-box">
-                        <strong>15% – Partnerships</strong>
-                        <span>KOLs, listings, cross-community collabs.</span>
-                    </div>
-                    <div class="token-box">
-                        <strong>10% – Team (Vested)</strong>
-                        <span>Linear unlock over time. No instant dump.</span>
-                    </div>
-                    <div class="token-box">
-                        <strong>5% – Treasury</strong>
-                        <span>Future instruments and ecosystem tools.</span>
-                    </div>
+          <!-- Roadmap -->
+          <section id="roadmap" class="section-card">
+            <div class="section-title-row">
+              <div class="section-label" data-i18n="roadmap_label">Roadmap</div>
+              <div class="section-tag">v1.0</div>
+            </div>
+            <div class="roadmap-steps">
+              <div class="step-pill">
+                <div class="step-title" data-i18n="roadmap_phase1_title">
+                  Phase I – Tuning
                 </div>
+                <div class="section-body">
+                  <span data-i18n="roadmap_phase1_body">
+                    Launch TRLK on DEX, publish website, Tokenomics v1.0 and
+                    Whitepaper v1.0. Bootstrap the first wave of cosmic
+                    listeners via X and Telegram.
+                  </span>
+                </div>
+              </div>
+              <div class="step-pill">
+                <div class="step-title" data-i18n="roadmap_phase2_title">
+                  Phase II – First concert
+                </div>
+                <div class="section-body">
+                  <span data-i18n="roadmap_phase2_body">
+                    Listings on tools like DexScreener and Dextools, first
+                    quests and community airdrops, multichain planning and
+                    cross-community collaborations.
+                  </span>
+                </div>
+              </div>
+              <div class="step-pill">
+                <div class="step-title" data-i18n="roadmap_phase3_title">
+                  Phase III – Full orchestra
+                </div>
+                <div class="section-body">
+                  <span data-i18n="roadmap_phase3_body">
+                    Introduce new “instrument” tokens, experiment with simple
+                    on-chain governance and build a sustainable treasury for
+                    long-term development.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </section>
 
-                <p class="token-meta">
-                    <strong>Contract (Base):</strong><br>
-                    <span class="contract-pill">0x0000...COMING_SOON</span>
-                </p>
-                <p class="muted">
-                    All allocations and lock details will be published in the
-                    official <strong>Tokenomics v1.0</strong> document before launch.
-                </p>
-            </article>
-        </section>
+          <!-- Tokenomics -->
+          <section id="tokenomics" class="section-card">
+            <div class="section-title-row">
+              <div class="section-label" data-i18n="tokenomics_label">
+                Tokenomics v1.0
+              </div>
+              <div class="section-tag">1,000,000,000 TRLK</div>
+            </div>
+            <div class="section-body">
+              <span class="section-body-strong">$TRLK Allocation (draft):</span>
+            </div>
+            <div class="tokenomics-grid">
+              <div class="token-box">
+                <div class="token-percent">50%</div>
+                <strong>DEX Liquidity</strong>
+                <div>Locked at launch for fair trading.</div>
+              </div>
+              <div class="token-box">
+                <div class="token-percent">20%</div>
+                <strong>Community &amp; Airdrops</strong>
+                <div>Quests, early supporters, orchestra rewards.</div>
+              </div>
+              <div class="token-box">
+                <div class="token-percent">15%</div>
+                <strong>Partnerships</strong>
+                <div>KOLs, listings, cross-community collabs.</div>
+              </div>
+              <div class="token-box">
+                <div class="token-percent">10%</div>
+                <strong>Team (Vested)</strong>
+                <div>Linear unlock. No instant dump.</div>
+              </div>
+              <div class="token-box">
+                <div class="token-percent">5%</div>
+                <strong>Treasury</strong>
+                <div>Future instruments &amp; protocol growth.</div>
+              </div>
+            </div>
+          </section>
 
-        <section class="grid" style="margin-top: 18px;">
-            <!-- Roadmap -->
-            <article class="card">
-                <div class="label">Roadmap</div>
-                <h2>From first note to full orchestra</h2>
-                <ul class="roadmap-list">
-                    <li>✅ Design &amp; lore for Orchestra Chain + TRLK</li>
-                    <li>✅ Website, social channels, Telegram hub</li>
-                    <li>🔄 Publish Tokenomics v1.0 &amp; security checks</li>
-                    <li>🔄 Launch $TRLK on DEX (Base) with locked liquidity</li>
-                    <li>🔄 Community quests, airdrops, first collabs</li>
-                    <li>🔜 Second musician (new token) + ecosystem dashboard</li>
-                </ul>
-                <p class="muted">
-                    Roadmap is intentionally simple. Delivery > empty promises.
-                </p>
-            </article>
+          <!-- Team -->
+          <section id="team" class="section-card">
+            <div class="section-title-row">
+              <div class="section-label" data-i18n="team_label">Team</div>
+              <div class="section-tag">Anon, but accountable</div>
+            </div>
+            <div class="section-body">
+              <span data-i18n="team_intro">
+                Orchestra Chain is built by a small anonymous team focused on
+                transparency and long-term development. No VC allocation, no
+                private seed round – just public tokenomics and step-by-step
+                execution.
+              </span>
+            </div>
+            <div class="team-grid">
+              <div class="team-card">
+                <div class="team-role">Conductor</div>
+                <div class="team-meta">
+                  Vision, narrative, community &amp; ecosystem coordination.
+                </div>
+              </div>
+              <div class="team-card">
+                <div class="team-role">Composer</div>
+                <div class="team-meta">
+                  Smart contracts, infra, security reviews &amp; audits (where
+                  applicable).
+                </div>
+              </div>
+              <div class="team-card">
+                <div class="team-role">Stage Crew</div>
+                <div class="team-meta">
+                  Design, socials, collabs and daily communication with the
+                  community.
+                </div>
+              </div>
+            </div>
+          </section>
 
-            <!-- How to join -->
-            <article class="card">
-                <div class="label">How to join</div>
-                <h2>Become part of the band</h2>
-                <p>
-                    1. Follow <strong>@OrchestraChain</strong> and the
-                    <strong>TRLK</strong> X account for live updates.<br>
-                    2. Join the Telegram hub for announcements and community talks.<br>
-                    3. Wait for the official launch post with contract and
-                    step-by-step “How to buy” guide.
-                </p>
-                <p class="muted">
-                    No private seed rounds, no secret presale.
-                    Everyone enters the same public stage.
-                </p>
-            </article>
-        </section>
-    </main>
+          <!-- Multichain -->
+          <section id="multichain" class="section-card">
+            <div class="section-title-row">
+              <div class="section-label" data-i18n="multichain_label">
+                Multichain Support
+              </div>
+              <div class="section-tag">Roadmap</div>
+            </div>
+            <div class="section-body">
+              <span data-i18n="multichain_body">
+                TRLK starts on Base mainnet. Future “instruments” may appear on
+                other chains to reach new audiences while staying connected by
+                one shared story.
+              </span>
+            </div>
+            <div class="multichain-list">
+              <div class="chain-pill">
+                <div class="chain-name">Base</div>
+                <div class="chain-status">Home chain · TRLK live</div>
+              </div>
+              <div class="chain-pill">
+                <div class="chain-name">Ethereum</div>
+                <div class="chain-status">Bridges &amp; tools (planned)</div>
+              </div>
+              <div class="chain-pill">
+                <div class="chain-name">Solana / Others</div>
+                <div class="chain-status">Future musicians (researching)</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Smart contract info -->
+          <section id="contract" class="section-card">
+            <div class="section-title-row">
+              <div class="section-label" data-i18n="contract_label">
+                Smart Contract Info
+              </div>
+              <div class="section-tag">Transparency</div>
+            </div>
+            <div class="contract-grid">
+              <div>
+                <strong>Token:</strong> TRLK – Tromlik Trombon
+              </div>
+              <div>
+                <strong>Chain:</strong> Base mainnet
+              </div>
+              <div class="mono">
+                <strong>Contract:</strong>
+                0x1D1692841Fa380dd4dD4c7AdfCB7ec2545555990
+              </div>
+              <div>
+                <strong>Explorer:</strong>
+                <a
+                  href="https://basescan.org/address/0x1D1692841Fa380dd4dD4c7AdfCB7ec2545555990"
+                  target="_blank"
+                  rel="noreferrer"
+                  style="color:#93c5fd;text-decoration:none;"
+                  >View on BaseScan ↗</a
+                >
+              </div>
+              <div data-i18n="contract_note">
+                Contract details, ownership status and any locks will be
+                documented publicly once main-net launch parameters are final.
+              </div>
+            </div>
+          </section>
+
+          <!-- FAQ -->
+          <section id="faq" class="section-card">
+            <div class="section-title-row">
+              <div class="section-label" data-i18n="faq_label">FAQ</div>
+              <div class="section-tag">Read first</div>
+            </div>
+            <div class="faq-list">
+              <div>
+                <div class="faq-item-question" data-i18n="faq_q1">
+                  Is this financial advice?
+                </div>
+                <div class="section-body" data-i18n="faq_a1">
+                  No. Orchestra Chain and TRLK are experimental crypto assets.
+                  Nothing on this site is financial, legal or tax advice. Always
+                  do your own research.
+                </div>
+              </div>
+              <div>
+                <div class="faq-item-question" data-i18n="faq_q2">
+                  Will the team dump on the community?
+                </div>
+                <div class="section-body" data-i18n="faq_a2">
+                  The goal is simple: transparent tokenomics, public information
+                  about locks and linear team vesting. No hidden private rounds,
+                  no stealth rugs.
+                </div>
+              </div>
+              <div>
+                <div class="faq-item-question" data-i18n="faq_q3">
+                  How can I join the community?
+                </div>
+                <div class="section-body" data-i18n="faq_a3">
+                  Follow us on X, join the Telegram hub and watch for quests,
+                  airdrops and new “instrument” announcements. The orchestra is
+                  still warming up.
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
 
     <footer>
-        <div>© 2025 Orchestra Chain™ • Built for transparency, not for rugs.</div>
-        <div>
-            <a href="https://x.com/OrchestraChain" target="_blank" rel="noopener">X</a>
-            &nbsp;•&nbsp;
-            <a href="https://t.me/OrchestraChain" target="_blank" rel="noopener">Telegram</a>
-        </div>
+      <div>
+        <span class="badge-small">© 2025 Orchestra Chain™</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://x.com/OrchestraChain" target="_blank" rel="noreferrer"
+          >X (Twitter)</a
+        >
+        <a href="https://t.me/OrchestraCommunity" target="_blank" rel="noreferrer"
+          >Telegram Community</a
+        >
+        <a
+          href="https://github.com/Brilliant1972/OrchestraChain"
+          target="_blank"
+          rel="noreferrer"
+          >GitHub</a
+        >
+        <a href="#tokenomics">Tokenomics PDF</a>
+        <a href="#faq">FAQ</a>
+      </div>
     </footer>
-</div>
+  </main>
+
+  <script>
+    const translations = {
+      en: {
+        header_tagline: "Interstellar orchestra of memecoins",
+        hero_pill: "First musician of the chain: TRLK",
+        hero_title: "A new cosmic frequency is tuning in.",
+        hero_subtitle:
+          "Orchestra Chain is an interstellar orchestra of memecoins. Every instrument becomes a token. First to play: TRLK – The Trombone Traveler.",
+        about_label: "About",
+        about_body:
+          "Orchestra Chain is a long-term experiment in building a transparent, community-owned ecosystem where every new memecoin is a new instrument in the band. TRLK is the first musician – a trombone traveler that opens the stage for future instruments and collaborations.",
+        roadmap_label: "Roadmap",
+        roadmap_phase1_title: "Phase I – Tuning",
+        roadmap_phase1_body:
+          "Launch TRLK on DEX, publish website, Tokenomics v1.0 and Whitepaper v1.0. Bootstrap the first wave of cosmic listeners via X and Telegram.",
+        roadmap_phase2_title: "Phase II – First concert",
+        roadmap_phase2_body:
+          "Listings on tools like DexScreener and Dextools, first quests and community airdrops, multichain planning and cross-community collaborations.",
+        roadmap_phase3_title: "Phase III – Full orchestra",
+        roadmap_phase3_body:
+          "Introduce new “instrument” tokens, experiment with simple on-chain governance and build a sustainable treasury for long-term development.",
+        tokenomics_label: "Tokenomics v1.0",
+        team_label: "Team",
+        team_intro:
+          "Orchestra Chain is built by a small anonymous team focused on transparency and long-term development. No VC allocation, no private seed round – just public tokenomics and step-by-step execution.",
+        multichain_label: "Multichain Support",
+        multichain_body:
+          "TRLK starts on Base mainnet. Future “instruments” may appear on other chains to reach new audiences while staying connected by one shared story.",
+        contract_label: "Smart Contract Info",
+        contract_note:
+          "Contract details, ownership status and any locks will be documented publicly once main-net launch parameters are final.",
+        faq_label: "FAQ",
+        faq_q1: "Is this financial advice?",
+        faq_a1:
+          "No. Orchestra Chain and TRLK are experimental crypto assets. Nothing on this site is financial, legal or tax advice. Always do your own research.",
+        faq_q2: "Will the team dump on the community?",
+        faq_a2:
+          "The goal is simple: transparent tokenomics, public information about locks and linear team vesting. No hidden private rounds, no stealth rugs.",
+        faq_q3: "How can I join the community?",
+        faq_a3:
+          "Follow us on X, join the Telegram hub and watch for quests, airdrops and new “instrument” announcements. The orchestra is still warming up."
+      },
+      ru: {
+        header_tagline: "Межзвёздный оркестр мем-монет",
+        hero_pill: "Первый музыкант сети: TRLK",
+        hero_title: "Новая космическая частота настраивается.",
+        hero_subtitle:
+          "Orchestra Chain — это межзвёздный оркестр мем-монет. Каждый инструмент становится токеном. Первый выступает TRLK — The Trombone Traveler.",
+        about_label: "О проекте",
+        about_body:
+          "Orchestra Chain — это долгосрочный эксперимент по созданию прозрачной, управляемой сообществом экосистемы, где каждая новая мем-монета — новый инструмент в оркестре. TRLK — первый музыкант, тромбонист-путешественник, который открывает сцену для будущих инструментов и коллабораций.",
+        roadmap_label: "Дорожная карта",
+        roadmap_phase1_title: "Фаза I — Настройка",
+        roadmap_phase1_body:
+          "Запуск TRLK на DEX, публикация сайта, Tokenomics v1.0 и Whitepaper v1.0. Старт первого ядра сообщества через X и Telegram.",
+        roadmap_phase2_title: "Фаза II — Первый концерт",
+        roadmap_phase2_body:
+          "Листинги на аналитических платформах (DexScreener, Dextools), первые квесты и аирдропы, подготовка мультимайнерной стратегии и партнёрств.",
+        roadmap_phase3_title: "Фаза III — Полный оркестр",
+        roadmap_phase3_body:
+          "Запуск новых «инструмент-токенов», эксперименты с простой он-чейн-говернансом и формирование устойчивого казначейства проекта.",
+        tokenomics_label: "Токеномика v1.0",
+        team_label: "Команда",
+        team_intro:
+          "Orchestra Chain создаётся небольшой анонимной командой, которая делает ставку на прозрачность и долгий срок жизни проекта. Нет VC-доли и приватных раундов — только открытая токеномика и поэтапная реализация.",
+        multichain_label: "Мультитайн-поддержка",
+        multichain_body:
+          "TRLK стартует в сети Base. В будущем новые «инструменты» могут появляться и на других сетях, оставаясь частью общей истории.",
+        contract_label: "Информация о смарт-контракте",
+        contract_note:
+          "Подробности по контракту, владению и локам будут опубликованы отдельно после финализации параметров запуска.",
+        faq_label: "FAQ",
+        faq_q1: "Является ли это финансовым советом?",
+        faq_a1:
+          "Нет. Orchestra Chain и TRLK — экспериментальные криптоактивы. Ничто на этом сайте не является финансовой, юридической или налоговой рекомендацией. Всегда делайте собственное исследование.",
+        faq_q2: "Сможет ли команда устроить дамп?",
+        faq_a2:
+          "Цель проекта — прозрачная токеномика, публичная информация о локах и линейная вестинг-модель для команды. Никаких скрытых приватных раундов и «ковров».",
+        faq_q3: "Как присоединиться к сообществу?",
+        faq_a3:
+          "Подписывайтесь на X, заходите в Telegram-хаб и следите за квестами, аирдропами и анонсами новых «инструментов». Оркестр только разогревается."
+      }
+    };
+
+    function setLanguage(lang) {
+      const dict = translations[lang] || translations.en;
+      document
+        .querySelectorAll("[data-i18n]")
+        .forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (dict[key]) el.textContent = dict[key];
+        });
+
+      document
+        .querySelectorAll(".lang-btn")
+        .forEach((btn) => btn.classList.remove("active"));
+      const active = document.querySelector(`.lang-btn[data-lang="${lang}"]`);
+      if (active) active.classList.add("active");
+    }
+
+    document.querySelectorAll(".lang-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        setLanguage(btn.dataset.lang);
+      });
+    });
+
+    // Initialize EN by default
+    setLanguage("en");
+  </script>
 </body>
 </html>

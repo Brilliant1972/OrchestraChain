@@ -1,76 +1,189 @@
-index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orchestra Chain</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #0d0d0d;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-        .logo {
-            margin-top: 40px;
-        }
-        h1 {
-            font-size: 32px;
-            margin-top: 20px;
-        }
-        p {
-            font-size: 18px;
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-        .buttons {
-            margin-top: 30px;
-        }
-        .buttons a {
-            display: inline-block;
-            margin: 10px;
-            padding: 12px 22px;
-            background: #1a1a1a;
-            border: 1px solid #444;
-            border-radius: 8px;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .buttons a:hover {
-            background: #333;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orchestra Chain</title>
+  <style>
+    /* ===== BASE LAYOUT ===== */
+    * {
+      box-sizing: border-box;
+    }
 
-        footer {
-            margin-top: 50px;
-            opacity: 0.4;
-            font-size: 14px;
-        }
-    </style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      color: #ffffff;
+      text-align: center;
+
+      /* Космический фон */
+      background:
+        radial-gradient(circle at 20% 0%, #3a1b6f 0, transparent 55%),
+        radial-gradient(circle at 80% 0%, #174f7a 0, transparent 55%),
+        radial-gradient(circle at 15% 80%, #5f1e4f 0, transparent 55%),
+        radial-gradient(circle at 85% 80%, #1d3f5f 0, transparent 55%),
+        radial-gradient(circle at center, #12081f 0, #05030b 55%, #000000 100%);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px 24px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Плавающие звезды — чистый CSS, без картинок */
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -50px;
+      pointer-events: none;
+      background-image:
+        radial-gradient(2px 2px at 10% 20%, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(1.5px 1.5px at 70% 30%, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(1.5px 1.5px at 30% 80%, rgba(255, 255, 255, 0.4), transparent),
+        radial-gradient(2px 2px at 90% 70%, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.4), transparent);
+      z-index: -1;
+      opacity: 0.6;
+      animation: starDrift 40s linear infinite;
+    }
+
+    body::after {
+      opacity: 0.35;
+      filter: blur(1px);
+      animation-duration: 65s;
+      animation-direction: reverse;
+    }
+
+    @keyframes starDrift {
+      0% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(-20px, -40px, 0) scale(1.02);
+      }
+      100% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+    }
+
+    /* ===== CONTENT CARD ===== */
+    .wrapper {
+      max-width: 640px;
+      width: 100%;
+      padding: 32px 24px 28px;
+      border-radius: 18px;
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.08), rgba(7, 5, 20, 0.92));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow:
+        0 0 40px rgba(0, 0, 0, 0.7),
+        0 0 80px rgba(44, 123, 255, 0.12);
+      backdrop-filter: blur(16px);
+    }
+
+    .logo {
+      margin-top: 4px;
+      width: 150px;
+      max-width: 45vw;
+      filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.4));
+    }
+
+    h1 {
+      font-size: 32px;
+      margin: 24px 0 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-size: 18px;
+      opacity: 0.85;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    p b {
+      opacity: 1;
+    }
+
+    .buttons {
+      margin-top: 32px;
+    }
+
+    .buttons a {
+      display: inline-block;
+      margin: 8px;
+      padding: 11px 22px;
+      background: rgba(12, 16, 40, 0.9);
+      border-radius: 999px;
+      border: 1px solid rgba(154, 178, 255, 0.7);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 15px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .buttons a:hover {
+      background: rgba(55, 90, 200, 0.95);
+      border-color: rgba(212, 230, 255, 1);
+      box-shadow: 0 0 18px rgba(95, 145, 255, 0.8);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      margin-top: 32px;
+      opacity: 0.6;
+      font-size: 14px;
+    }
+
+    /* ===== MOBILE ADAPTATION ===== */
+    @media (max-width: 480px) {
+      .wrapper {
+        padding: 24px 18px 22px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      .buttons a {
+        width: 100%;
+        max-width: 260px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-    <img src="logo.png" class="logo" width="150">
+  <div class="wrapper">
+    <img src="logo.png" class="logo" alt="Orchestra Chain logo">
 
     <h1>Orchestra Chain</h1>
+
     <p>
-        An interstellar orchestra of memecoins.<br>
-        Every instrument becomes a token.<br>
-        First musician: <b>TRLK – The Trombone Traveler.</b>
+      An interstellar orchestra of memecoins.<br>
+      Every instrument becomes a token.<br>
+      First musician: <b>TRLK – The Trombone Traveler.</b>
     </p>
 
     <div class="buttons">
-        <a href="https://x.com/orchestrachain" target="_blank">X (Twitter)</a>
-        <a href="https://t.me/OrchestraChain" target="_blank">Telegram</a>
+      <a href="https://x.com/orchestrachain" target="_blank">X (Twitter)</a>
+      <a href="https://t.me/OrchestraChain" target="_blank">Telegram</a>
     </div>
 
     <footer>
-        © 2025 Orchestra Chain™
+      © 2025 Orchestra Chain™
     </footer>
-
+  </div>
 </body>
 </html>

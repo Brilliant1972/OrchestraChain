@@ -1,93 +1,657 @@
-<main class="hero-card hero-v2" id="about">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orchestra Chain – TRLK</title>
 
-  <!-- BACKGROUND COSMIC AURA -->
-  <div class="cosmic-aura"></div>
+  <!-- SEO -->
+  <meta name="description" content="Orchestra Chain — an interstellar orchestra of memecoins. First musician: TRLK – The Trombone Traveler." />
+  <meta name="keywords" content="Orchestra Chain, TRLK, memecoin, Base, crypto" />
 
-  <!-- HERO CONTENT -->
-  <section class="hero-header">
-    <div class="hero-tagline">
-      First Musician of the Chain • $TRLK
+  <!-- Social -->
+  <meta property="og:title" content="Orchestra Chain – An interstellar orchestra of memecoins" />
+  <meta property="og:description" content="Every instrument becomes a token. First musician: TRLK – The Trombone Traveler." />
+  <meta property="og:image" content="https://brilliant1972.github.io/OrchestraChain/og-image.png" />
+  <meta property="og:url" content="https://brilliant1972.github.io/OrchestraChain/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- GLOBAL STYLE -->
+  <style>
+    :root {
+      --bg-gradient: radial-gradient(circle at top left, #0d0f2a, #14172e, #0b0d22);
+      --accent: #ffd54a;
+      --accent-soft: rgba(255, 213, 74, 0.14);
+      --text-main: #f8f9ff;
+      --text-muted: #adb3c9;
+      --card-bg: rgba(14, 18, 36, 0.92);
+      --border-soft: rgba(255, 255, 255, 0.06);
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.65);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --radius-pill: 999px;
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Roboto", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .page {
+      width: 100%;
+      max-width: var(--max-width);
+      padding: 24px 16px 80px;
+    }
+
+    /* --------------------------------------- */
+    /* HEADER */
+    /* --------------------------------------- */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 0%, #ffe082, #ffca28, #f57f17);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 22px;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+    }
+
+    nav {
+      display: flex;
+      gap: 14px;
+    }
+
+    .nav-link {
+      font-size: 13px;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-soft);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+    }
+
+    /* --------------------------------------- */
+    /* HERO V3 */
+    /* --------------------------------------- */
+
+    .hero-v3 {
+      margin-top: 20px;
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at top, rgba(255,213,74,0.18), transparent 60%), var(--card-bg);
+      padding: 40px 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .hero-left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .hero-tag {
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .hero-subtitle span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border-radius: var(--radius-pill);
+      font-size: 14px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(0,0,0,0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #ffd54a, #ffb300);
+      color: #241b00;
+      font-weight: 600;
+      border-color: transparent;
+    }
+
+    .btn-outline {
+      color: var(--text-main);
+      background: rgba(0,0,0,0.5);
+    }
+
+    .btn-secondary {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .hero-image img {
+      width: 210px;
+      height: auto;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    @media (max-width: 860px) {
+      .hero-content {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .hero-image img {
+        width: 180px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+<!-- HEADER -->
+<header class="header">
+  <div class="header-left">
+    <div class="brand-logo">🎵</div>
+    <div class="brand-text">
+      <h1 class="brand-title">Orchestra Chain</h1>
+      <p class="brand-subtitle">Interstellar Memecoin Orchestra</p>
+    </div>
+  </div>
+
+  <nav class="header-nav">
+    <a href="#hero" class="nav-item">Home</a>
+    <a href="#about" class="nav-item">About</a>
+    <a href="#token" class="nav-item">Tokenomics</a>
+    <a href="#roadmap" class="nav-item">Roadmap</a>
+    <a href="#lore" class="nav-item">Lore</a>
+    <a href="#socials" class="nav-item">Socials</a>
+  </nav>
+</header>
+<!-- HERO SECTION -->
+<section id="hero" class="hero">
+  <div class="hero-content">
+    
+    <div class="hero-text">
+      <h2 class="hero-title">The First Musician Has Arrived</h2>
+      <p class="hero-subtitle">
+        TRLK — The Trombone Traveler.<br>
+        The opening note of the interstellar Orchestra Chain.<br>
+        Transparent. Community-driven. Built for the long journey.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="https://x.com/OrchestraChain" target="_blank" class="btn btn-primary">Follow on X</a>
+        <a href="https://t.me/OrchestraCommunity" target="_blank" class="btn btn-outline">Join Telegram</a>
+        <a href="#token" class="btn btn-secondary">Tokenomics</a>
+      </div>
     </div>
 
-    <h1 class="hero-title">
-      ORCHESTRA CHAIN
-    </h1>
+    <div class="hero-image">
+      <img src="logo.png" alt="TRLK Trombone Traveler">
+    </div>
 
-    <p class="hero-subtitle">
-      A cosmic multiverse where every token becomes a musical instrument.  
-      The concert begins with  
-      <span>TRLK — The Trombone Traveler.</span>
+  </div>
+</section>
+<!-- ABOUT SECTION -->
+<section id="about" class="about">
+  <h2 class="section-title">About the Orchestra</h2>
+
+  <p class="about-text">
+    Orchestra Chain is a long-term, transparent ecosystem where each new token
+    becomes a new <strong>musician</strong> in the cosmic orchestra.
+    <br><br>
+    TRLK — The Trombone Traveler — is the first musician who opens the score
+    for all future instruments. No stealth rugs, no hidden tricks — only
+    public tokenomics and step-by-step development.
+  </p>
+
+  <div class="about-grid">
+    <div class="about-card">
+      <h3>🚀 Vision</h3>
+      <p>
+        A multi-token ecosystem connected by one shared universe and one
+        evolving story.
+      </p>
+    </div>
+
+    <div class="about-card">
+      <h3>🎼 Lore-Driven</h3>
+      <p>
+        Every future token — a new musician. Every musician — a new chapter in
+        the Orchestra Chain saga.
+      </p>
+    </div>
+
+    <div class="about-card">
+      <h3>🔒 Transparent</h3>
+      <p>
+        Open tokenomics, verifiable liquidity, clean launch principles.
+      </p>
+    </div>
+
+    <div class="about-card">
+      <h3>🌌 Built for Years</h3>
+      <p>
+        This is not a one-month meme — this is a long-term universe that will
+        grow with time.
+      </p>
+    </div>
+  </div>
+</section>
+<!-- TOKENOMICS SECTION -->
+<section id="tokenomics" class="tokenomics">
+  <h2 class="section-title">Tokenomics</h2>
+
+  <div class="tokenomics-grid">
+    <div class="tok-card">
+      <div class="tok-percent">50%</div>
+      <h3>DEX Liquidity</h3>
+      <p>
+        Added at launch for deep & fair trading.  
+        Liquidity will be locked via a trusted locker.
+      </p>
+    </div>
+
+    <div class="tok-card">
+      <div class="tok-percent">20%</div>
+      <h3>Community & Airdrops</h3>
+      <p>
+        Rewards for early supporters, quests, long-term ecosystem participation.
+      </p>
+    </div>
+
+    <div class="tok-card">
+      <div class="tok-percent">15%</div>
+      <h3>Partnerships</h3>
+      <p>
+        KOLs, collabs, listings, cross-community growth.
+      </p>
+    </div>
+
+    <div class="tok-card">
+      <div class="tok-percent">10%</div>
+      <h3>Team (Vested)</h3>
+      <p>
+        Linear unlock. No instant dump. Long-term aligned.
+      </p>
+    </div>
+
+    <div class="tok-card">
+      <div class="tok-percent">5%</div>
+      <h3>Treasury</h3>
+      <p>
+        Future musicians, chain expansion, ecosystem experiments.
+      </p>
+    </div>
+  </div>
+
+  <div class="tokenomics-meta">
+    <p><strong>Ticker:</strong> TRLK</p>
+    <p><strong>Chain:</strong> Base mainnet</p>
+    <p><strong>Contract:</strong> 
+      <code>0x1D1692841Fa380dd4dD4c7AdfCB7ec2545555990</code>
     </p>
-  </section>
+  </div>
+</section>
+<!-- ROADMAP SECTION -->
+<section id="roadmap" class="roadmap">
+  <h2 class="section-title">Roadmap</h2>
 
-  <!-- ACTION BUTTONS -->
-  <section class="hero-actions">
-    <a class="btn btn-primary" href="https://x.com/OrchestraChain" target="_blank">
-      <span class="icon">𝕏</span> Follow on X
-    </a>
-    <a class="btn btn-outline" href="https://t.me/OrchestraCommunity" target="_blank">
-      <span class="icon">📣</span> Telegram Hub
-    </a>
-    <a class="btn btn-secondary" href="#tokenomics">
-      <span class="icon">📊</span> TRLK Tokenomics
-    </a>
-  </section>
+  <div class="roadmap-grid">
 
-</main>
-/* NEW ORCHESTRA HERO — V2 */
+    <div class="road-item">
+      <div class="road-phase">Phase 1</div>
+      <h3>Launch TRLK</h3>
+      <ul>
+        <li>Deploy smart contract on Base</li>
+        <li>Website + X + Telegram online</li>
+        <li>Initial community quests</li>
+        <li>Basic marketing push</li>
+      </ul>
+    </div>
 
-.hero-v2 {
-  position: relative;
-  padding: 60px 22px 50px;
-  background: rgba(10, 12, 30, 0.75);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 32px;
-  overflow: hidden;
-}
+    <div class="road-item">
+      <div class="road-phase">Phase 2</div>
+      <h3>Liquidity & Listings</h3>
+      <ul>
+        <li>Fair launch on DEX</li>
+        <li>Locked liquidity</li>
+        <li>Listings on Dextools / Dexscreener</li>
+        <li>Cross-community collaborations</li>
+      </ul>
+    </div>
 
-/* Cosmic glow behind hero */
-.hero-v2 .cosmic-aura {
-  position: absolute;
-  top: -140px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 580px;
-  height: 580px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,213,74,0.32) 0%, rgba(103,58,183,0.18) 45%, transparent 70%);
-  filter: blur(45px);
-  opacity: 0.9;
-  z-index: 0;
-}
+    <div class="road-item">
+      <div class="road-phase">Phase 3</div>
+      <h3>New Musicians</h3>
+      <ul>
+        <li>Launch of the 2nd musician token</li>
+        <li>Story-integrated drops</li>
+        <li>Ecosystem utilities</li>
+        <li>Holder dashboards</li>
+      </ul>
+    </div>
 
-/* Hero content forward */
-.hero-v2 section {
-  position: relative;
-  z-index: 10;
-}
+    <div class="road-item">
+      <div class="road-phase">Phase 4</div>
+      <h3>Orchestra Expansion</h3>
+      <ul>
+        <li>Multichain deployment</li>
+        <li>Shared universe across chains</li>
+        <li>Major partnerships</li>
+        <li>New cosmic musicians</li>
+      </ul>
+    </div>
 
-/* Title */
-.hero-v2 .hero-title {
-  font-size: 44px;
-  font-weight: 900;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-top: 8px;
-}
+  </div>
+</section>
+<!-- TEAM SECTION -->
+<section id="team" class="team">
+  <h2 class="section-title">Team</h2>
 
-/* Subtitle */
-.hero-v2 .hero-subtitle {
-  font-size: 15px;
-  color: #cdd5f5;
-  margin-top: 14px;
-  line-height: 1.7;
-}
+  <div class="team-grid">
 
-/* Buttons layout */
-.hero-v2 .hero-actions {
-  margin-top: 28px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 14px;
-}
+    <div class="team-card">
+      <div class="team-avatar">🎩</div>
+      <h3>Conductor</h3>
+      <p class="team-handle">@OrchestraConductor</p>
+      <p class="team-desc">
+        Vision, narrative direction, ecosystem architecture, long-term strategy.
+      </p>
+    </div>
+
+    <div class="team-card">
+      <div class="team-avatar">🎼</div>
+      <h3>Composer</h3>
+      <p class="team-handle">@ScoreArchitect</p>
+      <p class="team-desc">
+        Smart contract design, audits, security reviews and technical structure.
+      </p>
+    </div>
+
+    <div class="team-card">
+      <div class="team-avatar">🛠️</div>
+      <h3>Stage Crew</h3>
+      <p class="team-handle">@BackstageGuild</p>
+      <p class="team-desc">
+        Community support, quests, airdrops, daily operations and social growth.
+      </p>
+    </div>
+
+  </div>
+
+  <p class="team-footnote">
+    The team remains pseudonymous, but all blockchain actions, liquidity and tokenomics 
+    are public, transparent and fully verifiable.
+  </p>
+</section>
+<!-- FAQ SECTION -->
+<section id="faq" class="faq">
+  <h2 class="section-title">FAQ</h2>
+
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <h3 class="faq-q">Is this financial advice?</h3>
+      <p class="faq-a">
+        No. Orchestra Chain and TRLK are experimental crypto assets. 
+        Always DYOR and never invest more than you can afford to lose.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3 class="faq-q">How will airdrops work?</h3>
+      <p class="faq-a">
+        20% of TRLK supply is dedicated to quests, early supporters, 
+        future instruments, and ecosystem rewards. Distributed step-by-step.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3 class="faq-q">Are the team tokens locked?</h3>
+      <p class="faq-a">
+        Yes — team allocation is vested linearly. 
+        No instant unlock and no dumping ability.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3 class="faq-q">Will there be more tokens?</h3>
+      <p class="faq-a">
+        Yes. TRLK is the first musician. 
+        New tokens = new instruments in the cosmic orchestra.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3 class="faq-q">Which chain is used?</h3>
+      <p class="faq-a">
+        TRLK lives on Base mainnet.  
+        Future expansion to Solana and additional L2s is planned.
+      </p>
+    </div>
+
+  </div>
+</section>
+<!-- BLOCK #9 — MULTICHAIN SECTION (FULL, WITH CSS) -->
+<style>
+  /* MULTICHAIN SECTION */
+  .multichain {
+    margin-top: 60px;
+  }
+
+  .multichain-intro {
+    max-width: 680px;
+    margin-bottom: 24px;
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .chain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+  }
+
+  .chain-card {
+    padding: 16px;
+    border-radius: 16px;
+    background: rgba(10, 12, 28, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+  }
+
+  .chain-card.live {
+    border-color: var(--success);
+  }
+
+  .chain-card.planned {
+    border-color: #facc15;
+  }
+
+  .chain-card.research {
+    border-color: #60a5fa;
+  }
+
+  .chain-name {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .chain-status {
+    font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .chain-address {
+    font-size: 11px;
+    display: inline-block;
+    padding: 6px 8px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .chain-note {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+</style>
+
+<section id="multichain" class="multichain">
+  <h2 class="section-title">MULTICHAIN EXPANSION</h2>
+
+  <p class="multichain-intro">
+    TRLK begins its journey on <strong>Base mainnet</strong>, but the Orchestra will 
+    eventually expand across multiple blockchains — each new network adding 
+    instruments, utilities, and new lore to the grand cosmic symphony.
+  </p>
+
+  <div class="chain-grid">
+
+    <div class="chain-card live">
+      <h3 class="chain-name">BASE</h3>
+      <p class="chain-status">LIVE</p>
+      <code class="chain-address">0x1D1692841Fa380dd4dD4c7AdfCB7ec2545555990</code>
+    </div>
+
+    <div class="chain-card planned">
+      <h3 class="chain-name">SOLANA</h3>
+      <p class="chain-status">PLANNED</p>
+      <p class="chain-note">SPL musician coming in a future drop.</p>
+    </div>
+
+    <div class="chain-card research">
+      <h3 class="chain-name">ZK / L2s</h3>
+      <p class="chain-status">RESEARCH</p>
+      <p class="chain-note">zkSync · StarkNet · Polygon zkEVM</p>
+    </div>
+
+  </div>
+</section>
+<style>
+  footer {
+    margin-top: 40px;
+    padding: 30px 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 13px;
+    background: rgba(0,0,0,0.25);
+    backdrop-filter: blur(4px);
+  }
+
+  .footer-links {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-links a {
+    padding: 6px 12px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    font-size: 13px;
+    color: var(--text-main);
+    transition: 0.25s ease;
+  }
+
+  .footer-links a:hover {
+    background: rgba(255,255,255,0.18);
+  }
+
+  .footer-copy {
+    margin-top: 8px;
+    font-size: 12px;
+    opacity: 0.7;
+  }
+</style>
+
+<footer id="footer">
+  <div class="footer-title">Orchestra Chain™</div>
+
+  <div class="footer-links">
+    <a href="https://x.com/OrchestraChain" target="_blank" rel="noreferrer">𝕏 Twitter</a>
+    <a href="https://t.me/OrchestraCommunity" target="_blank" rel="noreferrer">Telegram</a>
+    <a href="https://github.com/Brilliant1972/OrchestraChain" target="_blank" rel="noreferrer">GitHub</a>
+    <a href="#tokenomics">Tokenomics</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#multichain">Multichain</a>
+  </div>
+
+  <div class="footer-copy">
+    © 2025 • No promises — only music.  
+  </div>
+</footer>

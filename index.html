@@ -139,6 +139,20 @@
       .hero-content { flex-direction: column-reverse; text-align: center; }
       .hero-image img { width: 180px; }
       nav { justify-content: center; }
+      .status-line { text-align: center; }
+    }
+
+    /* NEW: Status line (Hero + Footer) */
+    .status-line {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+      opacity: 0.88;
+      line-height: 1.5;
+    }
+    .status-line strong {
+      color: var(--text-main);
+      font-weight: 700;
     }
 
     /* Sections */
@@ -346,6 +360,11 @@
           <a href="https://brilliant1972.github.io/OrchestraChain/TRLK_Whitepaper_v1.0.pdf" target="_blank" class="btn btn-secondary">📘 Whitepaper v1.0 (PDF)</a>
           <a href="#tokenomics" class="btn btn-secondary">Tokenomics</a>
         </div>
+
+        <!-- Pre-Launch Status (Hero) -->
+        <p class="status-line">
+          <strong>Status:</strong> TRLK is live on Base. Trading will open after liquidity lock &amp; announcement.
+        </p>
       </div>
       <div class="hero-image">
         <img src="logo.png" alt="TRLK Trombone Traveler">
@@ -563,7 +582,13 @@
       <a href="#roadmap">Roadmap</a>
       <a href="#multichain">Multichain</a>
     </div>
-    <div class="footer-copy">© 2025 • No promises — only music.</div>
+
+    <div class="footer-copy">
+      © 2025 • No promises — only music.<br>
+      <span style="opacity: 0.78;">
+        Status: TRLK is live on Base. Trading will open after liquidity lock &amp; announcement.
+      </span>
+    </div>
   </footer>
 </div>
 </body>
